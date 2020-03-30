@@ -3,6 +3,14 @@ Recipe Stats Calculator
 
 In the given assignment we suggest you to process an automatically generated JSON file with recipe data and calculated some stats.
 
+Instructions
+-----
+
+1. Clone this repository.
+2. Create a new branch called `dev`.
+3. Create a pull request from your `dev` branch to the master branch.
+4. Reply to the thread you're having with our HR department telling them we can start reviewing your code
+
 Given
 -----
 
