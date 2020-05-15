@@ -26,12 +26,12 @@ Functional Requirements
 ------
 
 1. Count the number of unique recipe names.
-2. Count the number of occurences for each unique recipe name.
+2. Count the number of occurences for each unique recipe name (alphabetically ordered by recipe name).
 3. Find the postcode with most delivered recipes.
 4. Count the number of deliveries to postcode `10120` that lie within the delivery time between `10AM` and `3PM`, examples _(`12AM` denotes midnight)_:
-    - `YES` - `9AM - 2PM`
-    - `NO` - `10AM - 2PM`
-5. List the recipe names that contain in their name one of the following words:
+    - `NO` - `9AM - 2PM`
+    - `YES` - `10AM - 2PM`
+5. List the recipe names (alphabetically ordered) that contain in their name one of the following words:
     - Potato
     - Veggie
     - Mushroom
