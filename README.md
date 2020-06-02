@@ -39,9 +39,11 @@ Functional Requirements
 Non-functional Requirements
 --------
 
-1. The submission is provided as a `CLI` application.
-2. The expected output is rendered to `stdout`.
-3. It should be possible to (implementation is up to you):  
+1. The application is packaged with [Docker](https://www.docker.com/).
+2. Setup scripts are provided.
+3. The submission is provided as a `CLI` application.
+4. The expected output is rendered to `stdout`.
+5. It should be possible to (implementation is up to you):  
     a. provide a custom fixtures file as input  
     b. provide custom recipe names to search by (functional reqs. 5)  
     c. provide custom postcode and time window for search (functional reqs. 3)  
@@ -98,6 +100,5 @@ __General criteria from most important to less important__:
 2. Prefer application efficiency over code organisation complexity.
 3. Code is readable and comprehensible. Setup instructions and run instructions are provided.
 4. Tests are showcased (_no need to cover everything_).
-5. Setup scripts are provided (consider Docker).
-6. Supporting notes on taken decisions and further clarifications are welcome.
+5. Supporting notes on taken decisions and further clarifications are welcome.
 
