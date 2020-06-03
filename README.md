@@ -42,7 +42,7 @@ Non-functional Requirements
 1. The application is packaged with [Docker](https://www.docker.com/).
 2. Setup scripts are provided.
 3. The submission is provided as a `CLI` application.
-4. The expected output is rendered to `stdout`.
+4. The expected output is rendered to `stdout`. Make sure to render only the final `json`. If you need to print additional info or debug, pipe it to `stderr`.
 5. It should be possible to (implementation is up to you):  
     a. provide a custom fixtures file as input  
     b. provide custom recipe names to search by (functional reqs. 5)  
