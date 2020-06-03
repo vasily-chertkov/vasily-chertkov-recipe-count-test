@@ -14,7 +14,7 @@ Instructions
 Given
 -----
 
-Json fixtures file with recipe data. Download [Link](https://test-golang-recipes.s3-eu-west-1.amazonaws.com/recipe-calculation-test-fixtures/netme_hf_fixtures.tar.gz)
+Json fixtures file with recipe data. Download [Link](https://test-golang-recipes.s3-eu-west-1.amazonaws.com/recipe-calculation-test-fixtures/hf_test_calculation_fixtures.tar.gz)
 
 _Important notes_
 
