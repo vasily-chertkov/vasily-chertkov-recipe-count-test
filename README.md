@@ -81,7 +81,7 @@ Generate a JSON file of the following format:
         "delivery_count": 500
     },
     "match_by_name": [
-        "veggies", "steak", "tex-mex"
+        "Mediterranean Baked Veggies", "Speedy Steak Fajitas", "Tex-Mex Tilapia"
     ]
 }
 ```
