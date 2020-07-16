@@ -53,10 +53,14 @@ Expected output
 
 Generate a JSON file of the following format:
 
-```json
+```json5
 {
     "unique_recipe_count": 15,
     "count_per_recipe": [
+        {
+            "recipe": "Mediterranean Baked Veggies",
+            "count": 1
+        },
         {
             "recipe": "Speedy Steak Fajitas",
             "count": 1
@@ -64,10 +68,6 @@ Generate a JSON file of the following format:
         {
             "recipe": "Tex-Mex Tilapia",
             "count": 3
-        },
-        {
-            "recipe": "Mediterranean Baked Veggies",
-            "count": 1
         }
     ],
     "busiest_postcode": {
@@ -81,7 +81,7 @@ Generate a JSON file of the following format:
         "delivery_count": 500
     },
     "match_by_name": [
-        "mushroom recipe", "veggie recipe"
+        "veggies", "steak", "tex-mex"
     ]
 }
 ```
