@@ -46,7 +46,7 @@ Non-functional Requirements
 5. It should be possible to (implementation is up to you):  
     a. provide a custom fixtures file as input  
     b. provide custom recipe names to search by (functional reqs. 5)  
-    c. provide custom postcode and time window for search (functional reqs. 3)  
+    c. provide custom postcode and time window for search (functional reqs. 4)  
 
 Expected output
 ---------------
