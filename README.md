@@ -9,7 +9,7 @@ Instructions
 1. Clone this repository.
 2. Create a new branch called `dev`.
 3. Create a pull request from your `dev` branch to the master branch.
-4. Reply to the thread you're having with our HR department telling them we can start reviewing your code
+4. Reply to the thread you're having with your recruiter telling them we can start reviewing your code
 
 Given
 -----
