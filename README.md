@@ -1,3 +1,218 @@
+# Requiremets for the system
+Installed:
+- docker (with ability to run from the user)
+- make
+
+# Build
+```sh
+$ make build
+```
+<details><summary>Example</summary>
+
+```sh
+$ make build
+docker build \
+        --build-arg GO_VER=1.18.3 \
+        --build-arg ALPINE_VER=3.15 \
+        --build-arg WORKDIR=/go/src/github.com/hellofreshdevtests/recipe-count-task \
+        -t vasily.chertkov/recipe-count-task:1.0.0 -f /home/vchertkov/dev/hellofresh/vasily-chertkov-recipe-count-test-2020/docker/Dockerfile .
+Sending build context to Docker daemon    489kB
+Step 1/12 : ARG GO_VER
+Step 2/12 : ARG ALPINE_VER
+Step 3/12 : FROM golang:${GO_VER}-alpine${ALPINE_VER} as builder
+ ---> 391370347e38
+Step 4/12 : LABEL stage=server-intermediate
+ ---> Using cache
+ ---> 5343332a5b2b
+Step 5/12 : ARG WORKDIR
+ ---> Using cache
+ ---> ae798080bcae
+Step 6/12 : WORKDIR ${WORKDIR}
+ ---> Using cache
+ ---> becefe459f5b
+Step 7/12 : RUN apk --no-cache --update add     git
+ ---> Using cache
+ ---> f932cce0a026
+Step 8/12 : COPY ./ ./
+ ---> 7577f95770dc
+Step 9/12 : RUN CGO_ENABLED=0 GOOS=linux go build -v -mod=vendor -o /tmp/recipe-count-task ./cmd/cli/*.go
+ ---> Running in 3f92601bd059
+github.com/modern-go/reflect2
+github.com/modern-go/concurrent
+github.com/json-iterator/go
+command-line-arguments
+Removing intermediate container 3f92601bd059
+ ---> 83a170d0b636
+Step 10/12 : FROM alpine:${ALPINE_VER} as base
+ ---> c059bfaa849c
+Step 11/12 : COPY --from=builder /tmp/recipe-count-task /usr/local/bin/recipe-count-task
+ ---> 5a58953be0dc
+Step 12/12 : ENTRYPOINT ["/usr/local/bin/recipe-count-task"]
+ ---> Running in 3026ac3f573f
+Removing intermediate container 3026ac3f573f
+ ---> e603069252c3
+Successfully built e603069252c3
+Successfully tagged vasily.chertkov/recipe-count-task:1.0.0
+```
+</details>
+
+# Run
+The service requires the json file with the data to be passed.
+It can be done by passsing the path to the built container.
+The input file has to be mounted to the docker container as `/input.json` (See example below).
+The filter flags:
+- `from` - starting time of the delivery
+- `to` - end time of the delivery
+- `postcode` - postcode for the filtering deliveries
+- `f` - filter for the recipes match, allowed multiple values 
+
+```sh
+$ docker run --rm -v /tmp/hf_test_calculation_fixtures.json:/input.json vasily.chertkov/recipe-count-task:1.0.0 -from 11AM -to 4PM -postcode 10120 -f Mex -f Yellow -f Mac
+
+```
+<details><summary>Example</summary>
+
+```sh
+{
+    "unique_recipe_count": 29,
+    "count_per_recipe": [
+    {
+        "recipe": "Cajun-Spiced Pulled Pork",
+        "count": 667365
+    },
+    {
+        "recipe": "Cheesy Chicken Enchilada Bake",
+        "count": 333012
+    },
+    {
+        "recipe": "Cherry Balsamic Pork Chops",
+        "count": 333889
+    },
+    {
+        "recipe": "Chicken Pineapple Quesadillas",
+        "count": 331514
+    },
+    {
+        "recipe": "Chicken Sausage Pizzas",
+        "count": 333306
+    },
+    {
+        "recipe": "Creamy Dill Chicken",
+        "count": 333103
+    },
+    {
+        "recipe": "Creamy Shrimp Tagliatelle",
+        "count": 333395
+    },
+    {
+        "recipe": "Crispy Cheddar Frico Cheeseburgers",
+        "count": 333251
+    },
+    {
+        "recipe": "Garden Quesadillas",
+        "count": 333284
+    },
+    {
+        "recipe": "Garlic Herb Butter Steak",
+        "count": 333649
+    },
+    {
+        "recipe": "Grilled Cheese and Veggie Jumble",
+        "count": 333742
+    },
+    {
+        "recipe": "Hearty Pork Chili",
+        "count": 333355
+    },
+    {
+        "recipe": "Honey Sesame Chicken",
+        "count": 333748
+    },
+    {
+        "recipe": "Hot Honey Barbecue Chicken Legs",
+        "count": 334409
+    },
+    {
+        "recipe": "Korean-Style Chicken Thighs",
+        "count": 333069
+    },
+    {
+        "recipe": "Meatloaf à La Mom",
+        "count": 333570
+    },
+    {
+        "recipe": "Mediterranean Baked Veggies",
+        "count": 332939
+    },
+    {
+        "recipe": "Melty Monterey Jack Burgers",
+        "count": 333264
+    },
+    {
+        "recipe": "Mole-Spiced Beef Tacos",
+        "count": 332993
+    },
+    {
+        "recipe": "One-Pan Orzo Italiano",
+        "count": 333109
+    },
+    {
+        "recipe": "Parmesan-Crusted Pork Tenderloin",
+        "count": 333311
+    },
+    {
+        "recipe": "Spanish One-Pan Chicken",
+        "count": 333291
+    },
+    {
+        "recipe": "Speedy Steak Fajitas",
+        "count": 333578
+    },
+    {
+        "recipe": "Spinach Artichoke Pasta Bake",
+        "count": 333545
+    },
+    {
+        "recipe": "Steakhouse-Style New York Strip",
+        "count": 333473
+    },
+    {
+        "recipe": "Stovetop Mac 'N' Cheese",
+        "count": 333098
+    },
+    {
+        "recipe": "Sweet Apple Pork Tenderloin",
+        "count": 332595
+    },
+    {
+        "recipe": "Tex-Mex Tilapia",
+        "count": 333749
+    },
+    {
+        "recipe": "Yellow Squash Flatbreads",
+        "count": 333394
+    }
+],
+    "busiest_postcode": {
+    "postcode": "10176",
+    "delivery_count": 91785
+},
+    "count_per_postcode_and_time": {
+    "postcode": "10120",
+    "delivery_count": 2939,
+    "from": "11AM",
+    "to": "4PM"
+},
+    "match_by_name": [
+    "Stovetop Mac 'N' Cheese",
+    "Tex-Mex Tilapia",
+    "Yellow Squash Flatbreads"
+]
+}
+Processing time 11.075531875s
+```
+</details>
+
 Recipe Stats Calculator
 ====
 
