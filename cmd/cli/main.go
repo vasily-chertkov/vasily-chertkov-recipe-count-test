@@ -75,6 +75,6 @@ func main() {
 	}
 
 	now = time.Now()
-	fmt.Println("Processing time", now.Sub(t))
+	fmt.Fprintln(os.Stderr, "Processing time", now.Sub(t))
 	t = now
 }
